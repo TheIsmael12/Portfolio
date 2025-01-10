@@ -1,26 +1,38 @@
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
+// Definimos un tipo para los campos que contienen las traducciones
+type CareerTranslations = {
+
+    [key: string]: string // Mapa de idioma a texto
+
+}
+
 export async function GET(req: Request) {
 
     try {
 
         // Obtener el parámetro locale de la query string
+
         const url = new URL(req.url)
-        const locale = url.searchParams.get('locale') || 'en' // Valor por defecto 'en' si no se pasa 'locale'
+        const locale = url.searchParams.get('locale') || 'en'
 
         // Buscar las carreras y extraer las traducciones según la locale
+
         const careers = await prisma.careers.findMany()
 
         // Si deseas que los títulos y descripciones sean filtrados según la locale
 
         const careersWithLocalizedData = careers.map(career => {
 
+            const title = career.title as CareerTranslations  // Asegurarse de que title es de tipo CareerTranslations
+            const desc = career.desc as CareerTranslations    // Asegurarse de que desc es de tipo CareerTranslations
+
             return {
 
                 ...career,
-                title: career.title[locale] || career.title['en'], // Si no hay traducción en el idioma, se usa 'en'
-                desc: career.desc[locale] || career.desc['en'],   // Lo mismo para la descripción
+                title: title[locale] || title['en'], // Si no hay traducción en el idioma, se usa 'en'
+                desc: desc[locale] || desc['en'],     // Lo mismo para la descripción
 
             }
 
@@ -34,10 +46,10 @@ export async function GET(req: Request) {
         return NextResponse.json({ error: 'Failed to fetch careers' }, { status: 500 })
 
     }
+
 }
 
 // POST handler: Create a new career
-
 export async function POST(req: Request) {
 
     try {
@@ -54,19 +66,16 @@ export async function POST(req: Request) {
         }
 
         // Guardar los datos del título y la descripción como objetos JSON
-
         const newCareer = await prisma.careers.create({
 
             data: {
-
                 id,
-                title: title, // Debería ser un objeto JSON con diferentes idiomas
-                desc: desc, // Lo mismo para la descripción
+                title,  // Asumir que 'title' es un objeto JSON con las traducciones
+                desc,   // Lo mismo para 'desc'
                 url,
                 bussines,
                 startDate,
                 finishDate,
-
             },
 
         })

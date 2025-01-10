@@ -1,6 +1,13 @@
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
+// Definimos un tipo para los campos que contienen las traducciones
+type EducationTranslations = {
+
+    [key: string]: string // Mapa de idioma a texto
+
+}
+
 export async function GET(req: Request) {
 
     try {
@@ -9,18 +16,16 @@ export async function GET(req: Request) {
         const url = new URL(req.url)
         const locale = url.searchParams.get('locale') || 'en' // Valor por defecto 'en' si no se pasa 'locale'
 
-        // Buscar las carreras y extraer las traducciones según la locale
+        // Buscar las educaciones y extraer las traducciones según la locale
         const educations = await prisma.educations.findMany()
 
-        // Si deseas que los títulos y descripciones sean filtrados según la locale
+        const educationsWithLocalizedData = educations.map((education) => {
 
-        const educationsWithLocalizedData = educations.map(education => {
+            const degree = education.degree as EducationTranslations // Asegurar que 'degree' tiene el tipo correcto
 
             return {
-
-                ...education, // Si no hay traducción en el idioma, se usa 'en'
-                degree: education.degree[locale] || education.degree['en'],   // Lo mismo para la descripción
-
+                ...education,
+                degree: degree[locale] || degree['en'], // Si no hay traducción en el idioma, se usa 'en'
             }
 
         })
@@ -33,9 +38,8 @@ export async function GET(req: Request) {
         return NextResponse.json({ error: 'Failed to fetch educations' }, { status: 500 })
 
     }
-}
 
-// POST handler: Create a new education
+}
 
 export async function POST(req: Request) {
 
@@ -43,32 +47,27 @@ export async function POST(req: Request) {
 
         const body = await req.json()
 
-        // Validate the incoming data
+        // Validar los datos entrantes
         const { id, degree, institution, startDate, finishDate } = body
 
         if (!degree) {
-
-            return NextResponse.json({ error: 'Title and business are required' }, { status: 400 })
-
+            return NextResponse.json({ error: 'Degree is required' }, { status: 400 })
         }
 
-        // Guardar los datos del título y la descripción como objetos JSON
-
-        const neweducation = await prisma.educations.create({
+        // Guardar los datos del título como un objeto JSON
+        const newEducation = await prisma.educations.create({
 
             data: {
-
                 id,
-                degree: degree, // Debería ser un objeto JSON con diferentes idiomas
-                institution, // Lo mismo para la descripción
+                degree, // Asumimos que 'degree' es un objeto JSON con traducciones
+                institution, // Nombre de la institución
                 startDate,
                 finishDate,
-
             },
 
         })
 
-        return NextResponse.json(neweducation, { status: 201 })
+        return NextResponse.json(newEducation, { status: 201 })
 
     } catch (error) {
 
