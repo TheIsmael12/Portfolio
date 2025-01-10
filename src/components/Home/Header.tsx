@@ -63,7 +63,7 @@ const Header = () => {
                 <div className='h-56 lg:h-64 flex flex-col justify-end rounded-b-full bg-colorLight dark:bg-colorDark'>
                     <Image
                         className='w-96 lg:w-44 rounded-b-full'
-                        src='/assets/images/ismael.png'
+                        src='/assets/images/ismael.webp'
                         width='200'
                         height='200'
                         alt='Ismael Benabdellah'
