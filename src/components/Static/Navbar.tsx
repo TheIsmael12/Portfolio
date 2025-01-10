@@ -16,7 +16,7 @@ const Navbar = () => {
         { href: 'tel:612442260', title: 'Phone', icon: <MdOutlinePhoneIphone size={20} /> },
         { href: 'https://github.com/TheIsmael12', title: 'GitHub', icon: <FaGithub size={20} /> },
         { href: 'https://www.linkedin.com/in/ismael-benabdellah/', title: 'LinkedIn', icon: <FaLinkedin size={20} /> },
-        { href: 'mailto:b.ismael@boostseoweb.com', title: 'Email', icon: <IoIosMail size={20} /> },
+        { href: 'mailto:ismaelmad12@gmail.com', title: 'Email', icon: <IoIosMail size={20} /> },
 
     ]
 
