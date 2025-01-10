@@ -1,10 +1,24 @@
 import { useTranslations } from 'next-intl'
 
+import Link from 'next/link'
 import Image from 'next/image'
+
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { IoIosMail } from 'react-icons/io'
+import { MdOutlinePhoneIphone } from 'react-icons/md'
 
 const Header = () => {
 
     const t = useTranslations('Header')
+
+    const links = [
+
+        { href: 'tel:612442260', title: 'Phone', icon: <MdOutlinePhoneIphone size={20} /> },
+        { href: 'https://github.com/TheIsmael12', title: 'GitHub', icon: <FaGithub size={20} /> },
+        { href: 'https://www.linkedin.com/in/ismael-benabdellah/', title: 'LinkedIn', icon: <FaLinkedin size={20} /> },
+        { href: 'mailto:ismaelmad12@gmail.com', title: 'Email', icon: <IoIosMail size={20} /> },
+
+    ]
 
     return (
 
@@ -23,6 +37,22 @@ const Header = () => {
                     <p className='lg:w-[390px] text-balance lg:text-justify'>
                         <span className='font-semibold text-colorLight dark:text-colorDark'>{t('part1')}</span> {t('part2')} <span className='font-semibold text-colorLight dark:text-colorDark'>{t('part3')}</span> {t('part4')} {t('part5')}
                     </p>
+
+                    <div className='flex lg:hidden gap-8 items-center'>
+
+                        {links.map(({ href, title, icon }) => (
+                            <Link
+                                key={title}
+                                href={href}
+                                title={title}
+                                target='_blank'
+                                className='hover:text-colorLight dark:hover:text-colorDark'
+                            >
+                                {icon}
+                            </Link>
+                        ))}
+
+                    </div>
 
                 </div>
 
