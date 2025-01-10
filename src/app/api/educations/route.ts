@@ -1,10 +1,9 @@
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
-// Definimos un tipo para los campos que contienen las traducciones
 type EducationTranslations = {
 
-    [key: string]: string // Mapa de idioma a texto
+    [key: string]: string
 
 }
 
@@ -12,20 +11,18 @@ export async function GET(req: Request) {
 
     try {
 
-        // Obtener el parámetro locale de la query string
         const url = new URL(req.url)
-        const locale = url.searchParams.get('locale') || 'en' // Valor por defecto 'en' si no se pasa 'locale'
+        const locale = url.searchParams.get('locale') || 'en'
 
-        // Buscar las educaciones y extraer las traducciones según la locale
         const educations = await prisma.educations.findMany()
 
         const educationsWithLocalizedData = educations.map((education) => {
 
-            const degree = education.degree as EducationTranslations // Asegurar que 'degree' tiene el tipo correcto
+            const degree = education.degree as EducationTranslations
 
             return {
                 ...education,
-                degree: degree[locale] || degree['en'], // Si no hay traducción en el idioma, se usa 'en'
+                degree: degree[locale] || degree['en'], 
             }
 
         })
@@ -47,20 +44,18 @@ export async function POST(req: Request) {
 
         const body = await req.json()
 
-        // Validar los datos entrantes
         const { id, degree, institution, startDate, finishDate } = body
 
         if (!degree) {
             return NextResponse.json({ error: 'Degree is required' }, { status: 400 })
         }
 
-        // Guardar los datos del título como un objeto JSON
         const newEducation = await prisma.educations.create({
 
             data: {
                 id,
-                degree, // Asumimos que 'degree' es un objeto JSON con traducciones
-                institution, // Nombre de la institución
+                degree, 
+                institution, 
                 startDate,
                 finishDate,
             },

@@ -20,17 +20,13 @@ export async function generateStaticParams() {
 
 }
 
-// Usa 'params' para obtener el locale en generateMetadata
-
-type Locale = 'en' | 'es' | 'fr' // Definir los valores posibles de 'locale'
+type Locale = 'en' | 'es' | 'fr'
 
 export const generateMetadata = ({ params }: { params: { locale: Locale } }) => {
 
     const locale = params.locale
-    const baseUrl = `https://ismael.boostseoweb.com`
+    const baseUrl = `https://ismaelben.netlify.app/`
     const empresa = 'Ismael Benabdellah'
-
-    // Definición de los textos multilingües
 
     const translations = {
 
@@ -62,7 +58,6 @@ export const generateMetadata = ({ params }: { params: { locale: Locale } }) => 
 
     }
 
-    // Usar el valor de locale de manera segura con validación
     const metadata: Metadata = {
 
         title: translations.title[locale] || translations.title.en,
@@ -120,10 +115,8 @@ export default async function LocaleLayout({ children, params: { locale } }: {
 
 }) {
 
-    // Obtén los mensajes para el idioma
     const messages = await getMessages({ locale })
 
-    // Establece la localización para la prerenderización estática
     unstable_setRequestLocale(locale)
 
     return (

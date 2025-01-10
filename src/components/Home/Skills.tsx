@@ -16,9 +16,8 @@ const Skills = () => {
                 {t('title')}
             </HomeHeaders>
 
-            {/* Listado de trayectoria educacional */}
-
             {/* Listado de habilidades */}
+            
             <ul
                 className='flex flex-wrap items-center gap-2'
                 aria-label='Lista de tecnologías'>
