@@ -1,11 +1,11 @@
 import { unstable_setRequestLocale } from 'next-intl/server'
 
-import Header from '@/pages/Home/Header'
-import About from '@/pages/Home/About'
-import CareerPath from '@/pages/Home/CareerPath'
-import Education from '@/pages/Home/Education'
-import Projects from '@/pages/Home/Projects'
-import Skills from '@/pages/Home/Skills'
+import Header from '@/components/Home/Header'
+import About from '@/components/Home/About'
+import CareerPath from '@/components/Home/CareerPath'
+import Education from '@/components/Home/Education'
+import Projects from '@/components/Home/Projects'
+import Skills from '@/components/Home/Skills'
 
 interface HomeProps {
 
