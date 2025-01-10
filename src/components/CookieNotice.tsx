@@ -40,10 +40,10 @@ const CookieNotice = () => {
 
                 <div className='fixed z-50 inset-0 flex items-center justify-center bg-gray-800/60'>
 
-                    <div className='bg-white dark:bg-backgroundColor rounded-lg p-5 w-10/12 sm:w-[500px] space-y-4 border'>
+                    <div className='bg-white dark:bg-darkBackground rounded-lg p-5 w-10/12 sm:w-[500px] space-y-4 border'>
 
                         <div className='space-y-2 text-lg'>
-                            <h3 className='text-customColor flex items-center gap-4 font-semibold'>
+                            <h3 className='text-colorLight dark:text-colorDark flex items-center gap-4 font-semibold'>
                                 <MdOutlineCookie size={30} />
                                 {t('title')}
                             </h3>
@@ -53,11 +53,11 @@ const CookieNotice = () => {
                         </div>
 
                         <div className='flex justify-center gap-2'>
-                            <button onClick={acceptCookies} className='bg-customColor/90 border text-white px-5 py-1 hover:text-customColor hover:bg-white/10 dark:border-0'>
+                            <button onClick={acceptCookies} className='px-5 py-1 rounded-md text-white bg-colorLight dark:bg-colorDark hover:text-hoverLight dark:hover:bg-hoverDark'>
                                 {t('accept')}
                             </button>
                             <Link href='https://google.es' title={t('decline')}>
-                                <button className='bg-gray-600/90 border text-white px-5 py-1 hover:text-gray-600 hover:bg-white/10 dark:border-0'>
+                                <button className='px-5 py-1 text-white bg-gray-600/90 hover:text-gray-600 hover:bg-white/10'>
                                     {t('decline')}
                                 </button>
                             </Link>
