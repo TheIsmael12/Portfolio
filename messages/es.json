@@ -1,0 +1,38 @@
+{
+    "Cookies": {
+        "title": "Política de Cookies",
+        "desc": "Utilizamos cookies para mejorar tu experiencia de navegación y analizar el tráfico de nuestro sitio web. Puedes aceptar o rechazar el uso de cookies en cualquier momento.",
+        "accept": "Aceptar",
+        "decline": "Rechazar"
+    },
+    "Header": {
+        "part1": "+3 años",
+        "part2": "de experiencia como",
+        "part3": "Desarrollador Web Full Stack",
+        "part4": "en Madrid, España.",
+        "part5": "Especializado en el desarrollo de aplicaciones web con React."
+    },
+    "About": {
+        "title": "Sobre Mí",
+        "desc": "Soy estudiante de grado superior en Desarrollo de Aplicaciones Web, en busca de oportunidades para aplicar y desarrollar mis habilidades técnicas y conocimientos en un entorno profesional. Mi pasión por el aprendizaje continuo y mi capacidad para tomar decisiones me convierten en un recurso valioso. Estoy siempre preparado para afrontar nuevos desafíos."
+    },
+    "Careers": {
+        "title": "Trayectoria Profesional",
+        "atthemoment": "Actualmente",
+        "learnmore": "Saber Más",
+        "locale": "es-ES"
+    },
+    "Education": {
+        "title": "Formación",
+        "atthemoment": "Actualmente",
+        "locale": "es-ES"
+    },
+    "Projects": {
+        "title": "Proyectos",
+        "demo": "Demo",
+        "code": "Código"
+    },
+    "Skills": {
+        "title": "Habilidades"
+    }
+}

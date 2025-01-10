@@ -1,0 +1,38 @@
+{
+    "Cookies": {
+        "title": "Cookies Policy",
+        "desc": "We use cookies to improve your browsing experience and to analyze our website traffic. You can accept or decline the use of cookies at any time.",
+        "accept": "Accept",
+        "decline": "Decline"
+    },
+    "Header": {
+        "part1": "+3 years",
+        "part2": "of experience as",
+        "part3": "Full Stack Web Developer",
+        "part4": "in Madrid, Spain.",
+        "part5": "Specialized in web application development using React."
+    },
+    "About": {
+        "title": "About Me",
+        "desc": "I am a higher education student in Web Application Development looking for opportunities to apply and develop my technical skills and knowledge in a professional environment. My passion for learning and my decision-making ability make me a valuable asset. Always ready to take on new challenges."
+    },
+    "Careers": {
+        "title": "Career Path",
+        "atthemoment": "Currently",
+        "learnmore": "Learn More",
+        "locale": "en-US"
+    },
+    "Education": {
+        "title": "Education",
+        "atthemoment": "Currently",
+        "locale": "en-US"
+    },
+    "Projects": {
+        "title": "Projects",
+        "demo": "Demo",
+        "code": "Code"
+    },
+    "Skills": {
+        "title": "Skills"
+    }
+}

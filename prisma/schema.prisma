@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Projects {
+  id           Int      @id @default(autoincrement())
+  title        String 
+  desc         Json 
+  technologies String
+  codeLink     String?
+  demoLink     String?
+  createdAt    DateTime @default(now())
+}
+
+model Careers {
+  id         Int       @id @default(autoincrement())
+  title      Json
+  desc       Json 
+  url        String
+  bussines   String
+  startDate  DateTime
+  finishDate DateTime?
+  createdAt  DateTime  @default(now())
+}
+
+model Educations {
+  id          Int       @id @default(autoincrement())
+  degree      Json
+  institution String
+  startDate   DateTime
+  finishDate  DateTime?
+}
