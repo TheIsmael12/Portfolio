@@ -7,7 +7,8 @@ import {
     FaReact,
     FaNodeJs,
     FaPhp,
-    FaLaravel
+    FaLaravel,
+    FaSass
 } from 'react-icons/fa'
 import {
     TbWorld
@@ -20,7 +21,8 @@ import {
     SiPrisma,
     SiMysql,
     SiTypescript,
-    SiJavascript
+    SiJavascript,
+    SiNestjs
 } from 'react-icons/si'
 
 interface ProjectCardProps {
@@ -41,6 +43,8 @@ interface ProjectCardProps {
 const TECHNOLOGY_ICONS: Record<string, JSX.Element> = {
 
     react: <FaReact />,
+    sass: <FaSass />,
+    nestjs: <SiNestjs />,
     nodejs: <FaNodeJs />,
     nextjs: <RiNextjsFill />,
     tailwindcss: <RiTailwindCssFill />,
